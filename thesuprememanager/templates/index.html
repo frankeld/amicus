@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+  {{ super() }}
+  {# <style type="text/css">
+    .important { color: #336699; }
+  </style> #}
+{% endblock %}
+{% block content %}
+<div id="root" class="container">
+    <h1 role="banner" class="header title">What year are you looking to update?</h1>
+    <main class="content">
+        <form action="/year" method="get">
+          <input name="year" class="password-input" type="text" placeholder="ENTER YEAR"/>
+        </form>
+    </main>
+    <div role="contentinfo" class="footer">
+        <p class="footer__attrbution">Style inspired by <a href="https://twitter.com/m8urnett">Mark Burnett</a> / Typefaces by <a href="http://www.theleagueofmoveabletype.com/fonts/7-league-gothic">The League of Movable Type</a></p>
+        <p class="footer__disclaimer">This site is for educational use. Due to limitations of the technology involved, the results cannot always be accurate. Your password will not be sent over the internet.</p>
+    </div>
+</div>
+{% endblock %}
