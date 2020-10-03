@@ -53,6 +53,7 @@ class signUpViewController: UIViewController,UIPickerViewDelegate, UIPickerViewD
     
     func spicePage() {
         errorLabel.alpha = 0
+        signUpButton.layer.cornerRadius = 20
     }
     func safePassword(_ password : String) -> Bool{
         let isItGood = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{7,}")
@@ -72,10 +73,10 @@ class signUpViewController: UIViewController,UIPickerViewDelegate, UIPickerViewD
     }
     
     func transitionToMain(){
-        let mainViewController =
-            self.storyboard?.instantiateViewController(identifier: Globals.Storyboard.mainVC) as? mainViewController
-        view.window?.rootViewController = mainViewController
-        view.window?.makeKeyAndVisible()
+        var tabBar = self.storyboard?.instantiateViewController(withIdentifier: Globals.Storyboard.tabVC) as! UITabBarController
+        
+        var appDelegate = UIApplication.shared.delegate as! AppDelegate
+        view.window?.rootViewController = tabBar
     }
     
      // MARK: - Navigation
@@ -96,7 +97,7 @@ class signUpViewController: UIViewController,UIPickerViewDelegate, UIPickerViewD
                 
                 if err != nil{
                     self.problem("we have a problem")
-                    print("yikes")
+                   
                     print(err)
                 }
                 else{

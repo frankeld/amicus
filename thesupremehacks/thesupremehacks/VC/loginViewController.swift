@@ -21,7 +21,8 @@ class loginViewController: UIViewController {
     }
     
     func spicePage() {
-        errorLabel.alpha = 0 
+        errorLabel.alpha = 0
+        loginButton.layer.cornerRadius = 20
     }
     /*
     // MARK: - Navigation
@@ -33,10 +34,10 @@ class loginViewController: UIViewController {
     }
     */
     func transitionToMain(){
-        let mainViewController =
-            self.storyboard?.instantiateViewController(identifier: Globals.Storyboard.mainVC) as? mainViewController
-        view.window?.rootViewController = mainViewController
-        view.window?.makeKeyAndVisible()
+        var tabBar = self.storyboard?.instantiateViewController(withIdentifier: Globals.Storyboard.tabVC) as! UITabBarController
+        
+        var appDelegate = UIApplication.shared.delegate as! AppDelegate
+        view.window?.rootViewController = tabBar
     }
     @IBAction func loginTapped(_ sender: Any) {
         let email = emailField.text!.trimmingCharacters(in: .whitespacesAndNewlines)

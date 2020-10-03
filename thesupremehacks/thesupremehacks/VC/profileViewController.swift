@@ -1,21 +1,18 @@
 //
-//  mainViewController.swift
+//  profileViewController.swift
 //  thesupremehacks
 //
 //  Created by Victor Kalil on 10/3/20.
 //
 
 import UIKit
-import FirebaseFirestore
-class mainViewController: UIViewController {
 
-    @IBOutlet weak var caseTableView: UITableView!
-    
+class profileViewController: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
     }
     
 
@@ -29,6 +26,4 @@ class mainViewController: UIViewController {
     }
     */
 
-
-    
 }

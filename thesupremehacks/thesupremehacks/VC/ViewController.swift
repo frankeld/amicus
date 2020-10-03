@@ -13,9 +13,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var logInButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        spicePage()
         // Do any additional setup after loading the view.
     }
-
+    func spicePage(){
+        signUpButton.layer.cornerRadius = 20
+     
+        logInButton.layer.cornerRadius = 20
+    }
 
 }
 
