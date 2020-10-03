@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		584A26BA27BD82902B566265 /* Pods_thesupremehacks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588B2008F652B5EC6A9708FB /* Pods_thesupremehacks.framework */; };
+		F315E7A82528C98300FE89F5 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = F315E7A72528C98300FE89F5 /* Globals.swift */; };
 		F39E2C712528334F00FB3AD7 /* signUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39E2C702528334F00FB3AD7 /* signUpViewController.swift */; };
 		F39E2C742528335D00FB3AD7 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39E2C732528335D00FB3AD7 /* loginViewController.swift */; };
 		F39E2C772528336900FB3AD7 /* mainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39E2C762528336900FB3AD7 /* mainViewController.swift */; };
@@ -24,6 +25,7 @@
 		588B2008F652B5EC6A9708FB /* Pods_thesupremehacks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_thesupremehacks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		92F779096C7F7D5EF6210E95 /* Pods-thesupremehacks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-thesupremehacks.release.xcconfig"; path = "Target Support Files/Pods-thesupremehacks/Pods-thesupremehacks.release.xcconfig"; sourceTree = "<group>"; };
 		B5507A6E83069600FF75652A /* Pods-thesupremehacks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-thesupremehacks.debug.xcconfig"; path = "Target Support Files/Pods-thesupremehacks/Pods-thesupremehacks.debug.xcconfig"; sourceTree = "<group>"; };
+		F315E7A72528C98300FE89F5 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		F39E2C702528334F00FB3AD7 /* signUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signUpViewController.swift; sourceTree = "<group>"; };
 		F39E2C732528335D00FB3AD7 /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
 		F39E2C762528336900FB3AD7 /* mainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				F3C6966825282A0800725D7C /* LaunchScreen.storyboard */,
 				F3C6967125282A5C00725D7C /* GoogleService-Info.plist */,
 				F3C6966B25282A0800725D7C /* Info.plist */,
+				F315E7A72528C98300FE89F5 /* Globals.swift */,
 			);
 			path = thesupremehacks;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 				F39E2C712528334F00FB3AD7 /* signUpViewController.swift in Sources */,
 				F3C6966025282A0700725D7C /* SceneDelegate.swift in Sources */,
 				F39E2C742528335D00FB3AD7 /* loginViewController.swift in Sources */,
+				F315E7A82528C98300FE89F5 /* Globals.swift in Sources */,
 				F39E2C772528336900FB3AD7 /* mainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

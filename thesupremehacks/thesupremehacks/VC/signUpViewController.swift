@@ -73,7 +73,7 @@ class signUpViewController: UIViewController,UIPickerViewDelegate, UIPickerViewD
     
     func transitionToMain(){
         let mainViewController =
-            self.storyboard?.instantiateViewController(identifier: "mainVC") as? mainViewController
+            self.storyboard?.instantiateViewController(identifier: Globals.Storyboard.mainVC) as? mainViewController
         view.window?.rootViewController = mainViewController
         view.window?.makeKeyAndVisible()
     }
