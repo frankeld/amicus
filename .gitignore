@@ -58,27 +58,8 @@ DerivedData/
 !*.xcworkspace/contents.xcworkspacedata
 **/xcshareddata/WorkspaceSettings.xcsettings
 
-# End of https://www.toptal.com/developers/gitignore/api/xcode
-
-### CocoaPods ###
-## CocoaPods GitIgnore Template
-
-# CocoaPods - Only use to conserve bandwidth / Save time on Pushing
-#           - Also handy if you have a large number of dependant pods
-#           - AS PER https://guides.cocoapods.org/using/using-cocoapods.html NEVER IGNORE THE LOCK FILE
-# Pods/
-# Keeping for now while small
-
-# End of https://www.toptal.com/developers/gitignore/api/cocoapods
-
-
-# Created by https://www.toptal.com/developers/gitignore/api/jupyternotebooks
-# Edit at https://www.toptal.com/developers/gitignore?templates=jupyternotebooks
 
 ### JupyterNotebooks ###
-# gitignore template for Jupyter Notebooks
-# website: http://jupyter.org/
-
 .ipynb_checkpoints
 */.ipynb_checkpoints/*
 
@@ -86,7 +67,13 @@ DerivedData/
 profile_default/
 ipython_config.py
 
-# Remove previous ipynb_checkpoints
-#   git rm -r .ipynb_checkpoints/
+# Selenium
+*driver.log
 
-# End of https://www.toptal.com/developers/gitignore/api/jupyternotebooks
+# Firebase
+/*key.json
+
+# VS Code
+.vscode/settings.json
+
+# Based on https://www.toptal.com/developers/gitignore/api/jupyternotebooks,xcode
