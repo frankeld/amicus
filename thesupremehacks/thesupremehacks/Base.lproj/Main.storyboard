@@ -284,12 +284,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="moi-3S-hft">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TheCellView" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="moi-3S-hft">
                                 <rect key="frame" x="40" y="146" width="334" height="400"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="400" id="zbM-ca-1sg"/>
                                 </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CaseCell" id="Ae3-J4-8CA">
+                                        <rect key="frame" x="0.0" y="28" width="334" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ae3-J4-8CA" id="lLK-8h-ky6">
+                                            <rect key="frame" x="0.0" y="0.0" width="334" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PW5-O1-Ko4"/>
@@ -315,7 +325,7 @@
         <!--View Controller-->
         <scene sceneID="Aa1-Gl-cbp">
             <objects>
-                <viewController id="bMb-QA-Nfh" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CaseDescription" id="bMb-QA-Nfh" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9cz-WE-XWm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -394,6 +404,7 @@
                             <constraint firstItem="hpe-mA-mTp" firstAttribute="top" secondItem="8hf-JC-Hka" secondAttribute="bottom" constant="20" id="ReH-CO-TOj"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="2ZD-i4-kTO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XiJ-rM-2MF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

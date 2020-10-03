@@ -10,6 +10,7 @@ struct Globals {
     
     struct UserInfo{
         public var userID : String
+        public var viewing : String
         
     }
     
