@@ -1,5 +1,9 @@
+> ⚠️ This is a Hackathon entry for VandyHacks VII, and was created in under 36 hours. The code in this repo is likely to be hacky and potentially unstable/insecure, so please be careful if forking this repo. You can view the project's Devpost page [here](https://devpost.com/software/amicus-x83hm1).
+
+> 🏆 AMICUS WON 2ND PLACE - THANK YOU SO MUCH!
+
 # amicus
-⚖️ Adding civic engagement to the courts (VandyHacks VII Entry)
+⚖️ Adding civic engagement to the courts
 
 Demo: https://drive.google.com/file/d/12YSBhM6h0cqSGBimAfa6lf-Ccx9Yfq6V/view?usp=sharing
 
