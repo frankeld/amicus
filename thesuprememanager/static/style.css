@@ -624,3 +624,21 @@ body {
 	line-height: 1;
 	font-size: 25px;
 }
+
+
+div.fixed {
+  position: fixed;
+  top: 0;
+	left: 0;
+	width: unset;
+	margin: 0;
+	height: unset;
+	line-height: 1;
+	font-size: 25px;
+	margin: 10px;
+}
+div.fixed a {
+	text-decoration: none;
+	font-size: 25px;
+	line-height: 1;
+}
