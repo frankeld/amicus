@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% block title %}Index{% endblock %}
+{% block title %}{{case.id}}{% endblock %}
 {% block head %}
   {{ super() }}
 {% endblock %}
@@ -9,11 +9,10 @@
     <h1 role="banner" class="header title info">{{case.title}} ({{case.id}})</h1>
     <main class="content info">
       <div class="buttons">
-        <button class="password-input viewbutton" onclick="window.location.assign('/docket')"><span>View Opinions</span></button>
-        <button class="password-input viewbutton" onclick="window.location.assign('/docket')"><span>Override Context</span></button>
-        <button class="password-input viewbutton" onclick="window.location.assign('/docket')"><span>Generate Amicus</span></button>
+        <button class="password-input viewbutton" onclick="window.location.assign('{{case.id}}/opinions')"><span>View Opinions</span></button>
+        <button class="password-input viewbutton" onclick="var result = prompt('Please enter your override text:'); fetch('{{case.id}}/override', {method: 'post', body:result});alert('Success!');"><span>Override Context</span></button>
+        <button class="password-input viewbutton" onclick="window.location.assign('{{case.id}}/generate')"><span>Generate Amicus</span></button>
       </div>
-
       <div class="password-input info">
         <h2>Description</h2>
         <p>{{case.description}}</p>

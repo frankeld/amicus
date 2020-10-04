@@ -44,6 +44,41 @@ def create_app():
     def update_docket(docket):
         case = db.collection('cases').document(docket).get()
         return render_template('case.html', case = case.to_dict())
+    
+    @app.route('/docket/<string:docket>/opinions')
+    def opinions(docket):
+        case = db.collection('cases').document(docket).get()
+        opinions = db.collection('cases').document(docket).collection('opinions').stream()
+        users = []
+        for opinion in opinions:
+            thought = opinion.to_dict()
+            user = db.collection('users').document(opinion.id).get()
+            if user.exists:
+                user = user.to_dict()
+            else:
+                print("this should never happen")
+                print('opinion stored uid', opinion.id)
+                continue
+            user.update({'thought': thought})
+            count = user['voteCount']
+            if count < 3:
+                user.update({'activity': 'Low'})
+            elif count < 6:
+                user.update({'activity': 'Medium'})
+            elif count < 9:
+                user.update({'activity': 'High'})
+            elif count < 12:
+                user.update({'activity': 'Very High'})
+            else:
+                user.update({'activity': 'Extreme'})
+            users.append(user)
+        return render_template('opinions.html', case = case.to_dict(), users=users)
+
+    @app.route('/docket/<string:docket>/override', methods=['POST'])
+    def override(docket):
+        overridetext = request.get_data(as_text=True)
+        case = db.collection('cases').document(docket).set({'override': overridetext}, merge = True)
+        return 'done'
 
     @app.route('/api/year/<string:year>')
     def update_year(year):
