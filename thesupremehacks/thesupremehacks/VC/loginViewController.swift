@@ -9,7 +9,7 @@ import UIKit
 import FirebaseAuth
 
 class loginViewController: UIViewController {
-
+    
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
@@ -25,14 +25,14 @@ class loginViewController: UIViewController {
         loginButton.layer.cornerRadius = 20
     }
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
     func transitionToMain(){
         var tabBar = self.storyboard?.instantiateViewController(withIdentifier: Globals.Storyboard.tabVC) as! UITabBarController
         
@@ -50,8 +50,9 @@ class loginViewController: UIViewController {
                 self.errorLabel.alpha = 1
             }
             else{
-             //   Globals.UserInfo.userID = result?.user.uid as! String
-                
+                //   Globals.UserInfo.userID = result?.user.uid as! String
+                let userID = (Auth.auth().currentUser?.uid)!
+                print("current user :"+userID)
                 self.transitionToMain()
             }
         }

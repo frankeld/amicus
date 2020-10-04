@@ -8,6 +8,7 @@
 import UIKit
 import os.log
 import FirebaseFirestore
+import FirebaseAuth
 class mainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var caseTableView: UITableView!
@@ -28,7 +29,8 @@ class mainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var cases = [Case]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let userID = (Auth.auth().currentUser?.uid)!
+        print("current user :"+userID)
         caseTableView.delegate = self
         caseTableView.dataSource = self
         getCases()
@@ -51,7 +53,7 @@ class mainViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     let descriptionIn = document.data()["description"] as! String
                     let idIn = document.data()["id"] as! String
                     let titleIn = document.data()["title"] as! String
-                  //  print("Reading "+titleIn)
+                    //  print("Reading "+titleIn)
                     let newCase = Case(descript: descriptionIn, thefacts: factsIn, theID: idIn, theTitle: titleIn)
                     self.cases.append(newCase)
                     
@@ -68,7 +70,7 @@ class mainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       // print("I'm right here! \(cases.count)")
+        // print("I'm right here! \(cases.count)")
         return cases.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -103,7 +105,7 @@ class mainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         
         //print("\(segue)")
-      //  print("\(sender)")
+        //  print("\(sender)")
         guard let mealDetailViewController = segue.destination as? descriptionViewController else {
             fatalError("Unexpected destination: \(segue.destination)")
         }
@@ -113,8 +115,8 @@ class mainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         //       }
         
         guard let indexPath = caseTableView.indexPath(for: sender as! UITableViewCell) else {
-              fatalError("The selected cell is not being displayed by the table")
-            }
+            fatalError("The selected cell is not being displayed by the table")
+        }
         
         let selectedCase = cases[indexPath.row].id
         print(selectedCase)

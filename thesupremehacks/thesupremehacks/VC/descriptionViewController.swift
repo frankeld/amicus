@@ -40,6 +40,8 @@ class descriptionViewController: UIViewController {
         getCase()
         super.viewDidLoad()
         print(viewingCase)
+        let userID = (Auth.auth().currentUser?.uid)!
+        print("current user :"+userID)
         
         // Do any additional setup after loading the view.
     }
@@ -51,19 +53,53 @@ class descriptionViewController: UIViewController {
         let userID = Auth.auth().currentUser?.uid
         let db = Firestore.firestore()
         let mainRef =  db.collection("cases").document(viewingCase)
-        mainRef.updateData([
-            "totalCount": FieldValue.increment(Double(1))
-        ])
-        let userOpinion = self.opinionBox.text
-        mainRef.updateData([
-            "opinions":FieldValue.arrayUnion([userID!])
-        ])
-        if(plantiff){
-            mainRef.updateData(["plantiffCount": FieldValue.increment(Double(1))])
+        
+        //check to see if they've already submitted
+        mainRef.collection("opinions").document(userID!).getDocument{ (document, err) in
+            if let document = document, document.exists {
+                //USER HAS SUBMITTED OPINION
+                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                print("Document data: \(dataDescription)")
+                
+                let userOpinion = self.opinionBox.text
+                let original = document.data()!["plaintiff"] as! Bool
+                if(original && !self.plantiff){
+                    
+                    //if it was true before and now they want false
+                    mainRef.collection("opinions").document(userID!).setData(["text" : userOpinion,
+                                                                              "plaintiff": self.plantiff])
+                    mainRef.updateData(["plantiffCount": FieldValue.increment(Double(-1))])
+                    
+                }
+                if(!original && self.plantiff){
+                    mainRef.collection("opinions").document(userID!).setData(["text" : userOpinion,
+                                                                              "plaintiff": self.plantiff])
+                    mainRef.updateData(["plantiffCount": FieldValue.increment(Double(1))])
+                }
+                
+                mainRef.collection("opinions").document(userID!).setData(["text" : userOpinion,
+                                                                          "plaintiff": self.plantiff])
+                
+                
+            } else {
+                //USER HAS NOT SUBMITTED OPINION
+                mainRef.updateData([
+                    "totalCount": FieldValue.increment(Double(1))
+                ])
+                print("Document does not exist")
+                let userOpinion = self.opinionBox.text
+                mainRef.collection("opinions").document(userID!).setData(["text" : userOpinion,
+                                                                          "plaintiff": self.plantiff])
+                if(self.plantiff){
+                    mainRef.updateData(["plantiffCount": FieldValue.increment(Double(1))])
+                }
+                db.collection("users").document(userID!).updateData([
+                    "voteCount":FieldValue.increment(Double(1))
+                ])
+            }
         }
-        db.collection("users").document(userID!).updateData([
-            "voteCount":FieldValue.increment(Double(1))
-        ])
+        
+        
     }
     
     func getCase(){
@@ -73,7 +109,7 @@ class descriptionViewController: UIViewController {
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
                 let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-               // print("Document data: \(dataDescription)")
+                // print("Document data: \(dataDescription)")
                 self.caseName.text = document.data()!["title"] as? String
                 self.caseQuestion.text = document.data()!["question"] as? String
                 self.caseDocket.text = "Docket "+self.viewingCase

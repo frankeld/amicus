@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var logInButton: UIButton!
     override func viewDidLoad() {
@@ -18,9 +18,9 @@ class ViewController: UIViewController {
     }
     func spicePage(){
         signUpButton.layer.cornerRadius = 20
-     
+        
         logInButton.layer.cornerRadius = 20
     }
-
+    
 }
 
