@@ -45,7 +45,7 @@ body,input,select,textarea {
 html {
 	font-size: 1em;
 	line-height: 1.5em;
-	background: #376a82;
+	background: #E85E5E;
 	-webkit-font-smooting: antialiased;
 	transition: background 1s linear
 }
