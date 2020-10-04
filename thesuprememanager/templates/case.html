@@ -10,8 +10,8 @@
     <main class="content info">
       <div class="buttons">
         <button class="password-input viewbutton" onclick="window.location.assign('{{case.id}}/opinions')"><span>View Opinions</span></button>
-        <button class="password-input viewbutton" onclick="var result = prompt('Please enter your override text:'); fetch('{{case.id}}/override', {method: 'post', body:result});alert('Success!');"><span>Override Context</span></button>
-        <button class="password-input viewbutton" onclick="window.location.assign('{{case.id}}/generate')"><span>Generate Amicus</span></button>
+        <button class="password-input viewbutton" onclick="var result = prompt('Please enter your override text:'); if(result){fetch('{{case.id}}/override', {method: 'post', body:result});alert('Success!');}"><span>Override Context</span></button>
+        <button class="password-input viewbutton" onclick="window.open('{{case.id}}/generate', '_blank')"><span>Generate Amicus</span></button>
       </div>
       <div class="password-input info">
         <h2>Description</h2>

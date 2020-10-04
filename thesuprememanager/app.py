@@ -1,5 +1,5 @@
 import time
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, send_file
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
@@ -11,8 +11,8 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
 from selenium.webdriver.firefox.options import Options
-import os
-
+from docxtpl import DocxTemplate
+from datetime import date
 
 def create_app():
     # create and configure the app
@@ -79,6 +79,32 @@ def create_app():
         overridetext = request.get_data(as_text=True)
         case = db.collection('cases').document(docket).set({'override': overridetext}, merge = True)
         return 'done'
+
+    @app.route('/docket/<string:docket>/generate')
+    def generate(docket):
+        doc = DocxTemplate("template2.docx")
+        case = db.collection('cases').document(docket).get()
+        datestr = date.today().strftime("%b-%d-%Y")
+        opinions = db.collection('cases').document(docket).collection('opinions').stream()
+        users = []
+        for opinion in opinions:
+            thought = opinion.to_dict()
+            user = db.collection('users').document(opinion.id).get()
+            if user.exists:
+                user = user.to_dict()
+            else:
+                print("this should never happen")
+                print('opinion stored uid', opinion.id)
+                continue
+            user.update({'thought': thought})
+            users.append(user)
+        if (len(users)==0):
+            return 'not enough data'
+        case = case.to_dict()
+        doc.render({'users': users, 'date': datestr, 'case': case, 'supportedgroup': case['respondent'] if (case['totalCount'] - case['plantiffCount'] > case['plantiffCount']) else case['petitioner']})
+        title = "generated_doc.docx"
+        doc.save(title)
+        return send_file(title, attachment_filename=(docket + '-amicus.docx'))
 
     @app.route('/api/year/<string:year>')
     def update_year(year):
