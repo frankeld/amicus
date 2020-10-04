@@ -16,6 +16,7 @@ class profileViewController: UIViewController {
     @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet weak var voteCountLabel: UILabel!
     @IBOutlet weak var milestoneLabel: UILabel!
+    @IBOutlet weak var updateProfile: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         let userID = (Auth.auth().currentUser?.uid)!
@@ -23,7 +24,11 @@ class profileViewController: UIViewController {
         // Do any additional setup after loading the view.
         setUpProfile()
     }
+    @IBAction func updateProfilePressed(_ sender: Any) {
+        setUpProfile()
+    }
     func setUpProfile(){
+        updateProfile.layer.cornerRadius = 20
         let db = Firestore.firestore()
         let userID = Auth.auth().currentUser?.uid
         
