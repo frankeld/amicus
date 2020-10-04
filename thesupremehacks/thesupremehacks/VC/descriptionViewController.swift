@@ -22,7 +22,7 @@ class descriptionViewController: UIViewController {
     
     var caseDescription = ""
     var caseFacts = ""
-    
+    var caseNotes = ""
     struct Case{
         // var cameIn = ""
         var description = ""
@@ -43,10 +43,18 @@ class descriptionViewController: UIViewController {
         print(viewingCase)
         let userID = (Auth.auth().currentUser?.uid)!
         print("current user :"+userID)
-        
+        getNotes()
+        spicePage()
         // Do any additional setup after loading the view.
     }
-    
+    func spicePage(){
+        viewMoreButton.layer.cornerRadius = 20
+        submitFormButton.layer.cornerRadius = 20
+//        self.caseName.layer.borderColor = #colorLiteral(red: 1, green: 0.72330755, blue: 0.5985606313, alpha: 1)
+//        self.caseName.layer.borderWidth = 10
+//        self.caseName.layer.margin
+//        self.caseName.layer.cornerRadius = 20
+    }
     @IBAction func opinionChanged(_ sender: Any) {
         plantiff = !plantiff
     }
@@ -121,7 +129,40 @@ class descriptionViewController: UIViewController {
             }
         }
     }
+    func getNotes(){
+        let db = Firestore.firestore()
+        let mainRef =  db.collection("cases").document(viewingCase)
+        
+        //check to see if they've already submitted
+        mainRef.getDocument{ (document, err) in
+            if let document = document, document.exists {
+                //USER HAS SUBMITTED OPINION
+                
+                
+                let notes = document.data()!["override"] as? String ?? ""
+                print(document.data()!["override"] as? String)
+                if notes != ""{
+                    self.caseNotes = notes
+                    //if it was true before and now they want false
+                    
+                    
+                }else{
+                    self.caseNotes = "None for now. Feel free to check back another day for notes from either party."
+                }
+                
+                
+                
+            } else {
+                //USER HAS NOT SUBMITTED OPINION
+            
+                print("Document does not exist")
+      
+            }
+        }
+        
+        
     
+    }
     /*
      // MARK: - Navigation
      
@@ -157,6 +198,7 @@ class descriptionViewController: UIViewController {
         mealDetailViewController.displayDescription = caseDescription
         mealDetailViewController.displayFacts = caseFacts
         mealDetailViewController.caseDocket = viewingCase
+        mealDetailViewController.partyNoteText = caseNotes
     }
     
 }
