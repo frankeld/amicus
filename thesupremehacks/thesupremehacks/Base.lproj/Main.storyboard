@@ -298,6 +298,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="334" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="bMb-QA-Nfh" kind="showDetail" identifier="segue" id="Opa-gj-kRm"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -313,7 +316,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="T5f-ux-3ZX"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="caseTableView" destination="moi-3S-hft" id="Krz-XA-I2L"/>
                     </connections>
@@ -322,16 +324,16 @@
             </objects>
             <point key="canvasLocation" x="4450.7246376811599" y="158.70535714285714"/>
         </scene>
-        <!--View Controller-->
+        <!--Description View Controller-->
         <scene sceneID="Aa1-Gl-cbp">
             <objects>
-                <viewController storyboardIdentifier="CaseDescription" id="bMb-QA-Nfh" sceneMemberID="viewController">
+                <viewController id="bMb-QA-Nfh" customClass="descriptionViewController" customModule="thesupremehacks" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9cz-WE-XWm">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="8hf-JC-Hka">
-                                <rect key="frame" x="40" y="84" width="334" height="354"/>
+                                <rect key="frame" x="40" y="40" width="334" height="313.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Case Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pL1-UR-RBh">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="31.5"/>
@@ -339,20 +341,14 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TagOne, TagTwo, TagThree" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mdk-wl-ugF">
-                                        <rect key="frame" x="0.0" y="51.5" width="334" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you think people should be able to do this with these requirements?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pX6-z9-XIV">
-                                        <rect key="frame" x="0.0" y="92" width="334" height="41"/>
+                                        <rect key="frame" x="0.0" y="51.5" width="334" height="41"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Nmn-m8-hmp">
-                                        <rect key="frame" x="0.0" y="153" width="334" height="30"/>
+                                        <rect key="frame" x="0.0" y="112.5" width="334" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Docket 12-3456" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWV-xG-Hwk">
                                                 <rect key="frame" x="0.0" y="0.0" width="214" height="30"/>
@@ -370,7 +366,7 @@
                                         </subviews>
                                     </stackView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="What do you think?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p8h-qK-3Yn">
-                                        <rect key="frame" x="0.0" y="203" width="334" height="100"/>
+                                        <rect key="frame" x="0.0" y="162.5" width="334" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="9So-Md-DnI"/>
                                         </constraints>
@@ -378,19 +374,25 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textField>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="au4-PT-3Xd">
-                                        <rect key="frame" x="0.0" y="323" width="334" height="32"/>
+                                        <rect key="frame" x="0.0" y="282.5" width="334" height="32"/>
                                         <segments>
                                             <segment title="Plantiff"/>
                                             <segment title="Defendant"/>
                                         </segments>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="selectedSegmentTintColor" red="0.8980392157" green="0.29411764709999999" blue="0.29411764709999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="opinionChanged:" destination="bMb-QA-Nfh" eventType="valueChanged" id="ac4-AE-FQM"/>
+                                        </connections>
                                     </segmentedControl>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hpe-mA-mTp">
-                                <rect key="frame" x="80" y="458" width="254" height="30"/>
+                                <rect key="frame" x="80" y="373.5" width="254" height="30"/>
                                 <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submitOpinion:" destination="bMb-QA-Nfh" eventType="touchUpInside" id="k9P-1q-Z2L"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lsh-F5-89l"/>
@@ -405,6 +407,15 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="2ZD-i4-kTO"/>
+                    <connections>
+                        <outlet property="caseDocket" destination="fWV-xG-Hwk" id="02f-OD-qD6"/>
+                        <outlet property="caseName" destination="pL1-UR-RBh" id="PSm-LX-dAu"/>
+                        <outlet property="caseQuestion" destination="pX6-z9-XIV" id="jRg-8o-8aZ"/>
+                        <outlet property="choiceChooser" destination="au4-PT-3Xd" id="pby-4G-Dxl"/>
+                        <outlet property="opinionBox" destination="p8h-qK-3Yn" id="f01-n2-TIi"/>
+                        <outlet property="submitFormButton" destination="hpe-mA-mTp" id="evw-Sp-ZED"/>
+                        <outlet property="viewMoreButton" destination="lJX-hz-ZpY" id="DIc-L1-uFq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XiJ-rM-2MF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

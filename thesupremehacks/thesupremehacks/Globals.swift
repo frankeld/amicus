@@ -6,12 +6,19 @@
 //
 
 import Foundation
+
 struct Globals {
     
     struct UserInfo{
         public var userID : String
-        public var viewing : String
         
+        
+    }
+    struct viewingInfo{
+        public var viewing : String
+      //  init(viewingha : String) {
+      //      self.viewing = viewingha
+      //  }
     }
     
     struct Storyboard{

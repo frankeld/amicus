@@ -108,8 +108,7 @@ class signUpViewController: UIViewController,UIPickerViewDelegate, UIPickerViewD
                      "uid": result!.user.uid,
                      "age": self.years[ageIn],
                      "state": self.states[stateIn],
-                     "voteCount": 0,
-                     "issues":""])
+                     "voteCount": 0])
                     {(error) in
                         if error != nil{
                         self.problem("couldn't make user")
