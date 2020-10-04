@@ -20,7 +20,8 @@ class descriptionViewController: UIViewController {
     @IBOutlet weak var viewMoreButton: UIButton!
     @IBOutlet weak var opinionBox: UITextField!
     
-    
+    var caseDescription = ""
+    var caseFacts = ""
     
     struct Case{
         // var cameIn = ""
@@ -113,6 +114,8 @@ class descriptionViewController: UIViewController {
                 self.caseName.text = document.data()!["title"] as? String
                 self.caseQuestion.text = document.data()!["question"] as? String
                 self.caseDocket.text = "Docket "+self.viewingCase
+                self.caseDescription = document.data()!["description"] as? String ?? "No additional description. Please click the link below to learn more!"
+                self.caseFacts = document.data()!["facts"] as? String ?? "No additional facts. Please click the link below to learn more!"
             } else {
                 print("Document does not exist")
             }
@@ -128,5 +131,32 @@ class descriptionViewController: UIViewController {
      // Pass the selected object to the new view controller.
      }
      */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        super.prepare(for: segue, sender: sender)
+        
+        
+        //print("\(segue)")
+        //  print("\(sender)")
+        guard let mealDetailViewController = segue.destination as? factsViewController else {
+            fatalError("Unexpected destination: \(segue.destination)")
+        }
+        
+        //  guard let selectedCaseCell = sender as? mainViewController else {
+        //            fatalError("Unexpected sender: \(sender)")
+        //       }
+        
+   //     guard let indexPath = caseTableView.indexPath(for: sender as! UITableViewCell) else {
+   //         fatalError("The selected cell is not being displayed by the table")
+   //     }
+        
+    //    let selectedCase = cases[indexPath.row].id
+     //   print(selectedCase)
+        //print("hi david")
+        mealDetailViewController.displayDescription = caseDescription
+        mealDetailViewController.displayFacts = caseFacts
+        mealDetailViewController.caseDocket = viewingCase
+    }
     
 }
