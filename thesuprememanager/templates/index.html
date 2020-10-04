@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block title %}Home{% endblock %}
+{% block head %}
+  {{ super() }}
+  {# <style type="text/css">
+    .important { color: #336699; }
+  </style> #}
+{% endblock %}
+{% block content %}
+<div id="root" class="container">
+    <h1 role="banner" class="header title">What year are you looking to update?</h1>
+    <main class="content">
+        <form action="/year" method="get">
+          <input name="year" class="password-input" type="text" placeholder="ENTER YEAR"/>
+        </form>
+      <button class="password-input viewbutton" onclick="window.location.assign('/docket')"><span>View/Edit Cases</span></button>
+    </main>
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+<div class='fixed'><a href="/">⬅️</a></div>
+  <div id="loader" class=""></div>
+  <div id="root" class="container">
+    <h1 role="banner" class="header title">Case List</h1>
+    <main class="content">
+      {% for message in cases %}
+        <a class="password-input docket" onclick="window.location.assign('/docket/{{ message.id }}')">{{ message.title }}</a>
+      {% endfor %}
+    </main>
+</div>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

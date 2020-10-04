@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block title %}{{case.id}} Opinions{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+  <div class='fixed'><a href="/docket/{{case.id}}">⬅️</a></div>
+  <div id="loader" class=""></div>
+  <div id="root" class="container">
+    <h1 role="banner" class="header title info">{{case.title}} ({{case.id}})</h1>
+    <main class="content">
+      {% if not users%}
+        <div class="password-input thought thought-text">
+          Nothing submitted yet.
+        </div>
+      {% endif %}
+      {% for user in users %}
+        <div class="password-input thought">
+          <div class='stats'>
+            <p class='state'>State: {{user.state}}</p>
+            <p class='age'>Age: {{user.age}}</p>
+            <p class='side'> Opinion for:
+              {% if user.thought.plaintiff%}
+                Plaintiff
+              {% else %}
+                Defendant
+              {% endif %}
+            </p>
+            <p class='engagement'>{{user.activity}} Engagement</p>
+            <a class='contact' href='mailto:{{user.email}}'>Contact</a>
+          </div>
+          <div class='thought-text'>{{user.thought.text}}</div>
+        </div>
+      {% endfor %}
+
+    </main>
+</div>
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}

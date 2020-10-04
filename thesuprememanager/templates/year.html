@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+  {{ super() }}
+    <script src="{{ url_for('static', filename='year.js') }}"></script>
+{% endblock %}
+{% block content %}
+  <div id="loader" class="loading"></div>
+  <div id="root" class="container loading">
+    <h1 role="banner" class="header title">Success</h1>
+    <main class="content">
+    </main>
+</div>
+{% endblock %}
