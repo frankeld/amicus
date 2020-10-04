@@ -12,7 +12,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
 }
 
 body {
-	line-height: 1
+	line-height: 1;
 }
 
 ol,ul {
@@ -171,7 +171,8 @@ hr {
 }
 
 .password-input::placeholder {
-	color: #376a82
+	/* color: #376a82 */
+	color: black;
 }
 
 .block__header {
@@ -487,7 +488,7 @@ html,body {
 #content {
 	height: 100%;
 }
-/* 
+
 #loader.loading {
 	display: block;
   border: 16px solid #f3f3f3;
@@ -526,4 +527,64 @@ body.loading {
 	0%{background-position:68% 0%}
 	50%{background-position:33% 100%}
 	100%{background-position:68% 0%}
-} */
+}
+
+a.docket {
+	height: unset;
+	border-radius: 10px;
+}
+
+a.docket:hover {
+	background: rgba(255,255,255,.8)
+}
+
+div.info {
+	height: unset;
+	break-inside: avoid;
+	margin-top: 0;
+	margin-bottom: 48px;
+}
+
+.info p {
+	font-size: 25px;
+	line-height: normal;
+	padding: 20px;
+	padding-top: 0;
+}
+
+.title.info {
+	padding-bottom: 30px;
+}
+
+#content {
+	margin: auto 10vw;
+}
+
+.viewbutton {
+	width: unset;
+	padding-left: 40px;
+	padding-right: 40px;
+	border-radius: 10px;
+	margin: auto;
+	margin-top: 40px;
+}
+
+.viewbutton span {
+	color: black;
+	text-transform: uppercase;
+}
+
+.buttons {
+	display: flex;
+	margin-bottom: 30px;
+	font: small;
+	justify-content: space-between;
+}
+
+.buttons button{
+	margin: 20px;
+	height: unset;
+	font-size: 25px;
+	padding: 5px 30px;
+	width: 33%;
+}

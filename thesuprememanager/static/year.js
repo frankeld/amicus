@@ -19,6 +19,8 @@ window.onload = function() {
       element.classList.remove("loading");
       console.log(element);
     }
+    history.replaceState(null, '', 'docket')
+    window.location.assign("/docket");
   })
 };
 

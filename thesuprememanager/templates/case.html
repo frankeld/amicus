@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+  <div id="loader" class=""></div>
+  <div id="root" class="container">
+    <h1 role="banner" class="header title info">{{case.title}} ({{case.id}})</h1>
+    <main class="content info">
+      <div class="buttons">
+        <button class="password-input viewbutton" onclick="window.location.assign('/docket')"><span>View Opinions</span></button>
+        <button class="password-input viewbutton" onclick="window.location.assign('/docket')"><span>Override Context</span></button>
+        <button class="password-input viewbutton" onclick="window.location.assign('/docket')"><span>Generate Amicus</span></button>
+      </div>
+
+      <div class="password-input info">
+        <h2>Description</h2>
+        <p>{{case.description}}</p>
+      </div>
+      <div class="password-input info">
+        <h2>Question</h2>
+        <p>{{case.question}}</p>
+      </div>
+      <div class="password-input info">
+        <h2>Facts</h2>
+        <p>{{case.facts}}</p>
+      </div>
+      <div class="password-input info">
+        <h2>Date Entered</h2>
+        <p>{{case.dates[0]}}</p>
+      </div>
+    </main>
+</div>
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}

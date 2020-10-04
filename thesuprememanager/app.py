@@ -1,5 +1,5 @@
 import time
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
@@ -32,14 +32,23 @@ def create_app():
     def year():
         return render_template('year.html')
 
-    @app.route('/<string:docket>')
+    @app.route('/docket')
+    def docket():
+        cases_collection = db.collection('cases').stream()
+        cases = []
+        for case in cases_collection:
+            cases.append(case.to_dict())
+        return render_template('docket.html', cases = cases)
+
+    @app.route('/docket/<string:docket>')
     def update_docket(docket):
-        return 'test'
+        case = db.collection('cases').document(docket).get()
+        return render_template('case.html', case = case.to_dict())
 
     @app.route('/api/year/<string:year>')
     def update_year(year):
         if 2+3 == 5:
-            time.sleep(3)
+            time.sleep(4)
             return 'done'
         def repair(string):
             string = BeautifulSoup(string, 'html.parser').text
@@ -86,5 +95,5 @@ def create_app():
                 cases_collection.document(case['id']).set(case, merge=True)
         finally:
             driver.quit()
-        return 'done'
+        return jsonify(cases)
     return app

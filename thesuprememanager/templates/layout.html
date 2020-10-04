@@ -11,7 +11,10 @@
     <div id="content">{% block content %}{% endblock %}</div>
     <div id="footer">
       {% block footer %}
-      {# &copy; Copyright 2010 by <a href="http://domain.invalid/">you</a>. #}
+        <div role="contentinfo" class="footer">
+        <p class="footer__attrbution" style="font-size:30px">Made with ❤️ by Amicus ⚖️ for VandyHacks 🐿️</p>
+        <p class="footer__disclaimer">Style inspired by <a href="https://twitter.com/m8urnett">Mark Burnett</a></p>
+       </div>
       {% endblock %}
     </div>
   </body>
