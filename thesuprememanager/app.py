@@ -82,7 +82,7 @@ def create_app():
 
     @app.route('/docket/<string:docket>/generate')
     def generate(docket):
-        doc = DocxTemplate("template2.docx")
+        doc = DocxTemplate("template.docx")
         case = db.collection('cases').document(docket).get()
         datestr = date.today().strftime("%b-%d-%Y")
         opinions = db.collection('cases').document(docket).collection('opinions').stream()
