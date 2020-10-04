@@ -108,9 +108,6 @@ def create_app():
 
     @app.route('/api/year/<string:year>')
     def update_year(year):
-        if 2+3 == 5:
-            time.sleep(4)
-            return 'done'
         def repair(string):
             string = BeautifulSoup(string, 'html.parser').text
             string = string.replace(u'\xa0', u' ')
